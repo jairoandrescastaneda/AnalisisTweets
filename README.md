@@ -34,4 +34,5 @@
 ### Ejecutar proyecto 
 
 `pip install requeriments.txt `
+
 `python main.py `
