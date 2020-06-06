@@ -1,0 +1,152 @@
+{
+  "intents": [
+    {
+      "intent": "i_want_complaint",
+      "examples": [
+        {
+          "text": "El almacén subió los costos sin ningún motivo"
+        },
+        {
+          "text": "los precios aumentaron de un día para otro"
+        },
+        {
+          "text": "quiero denunciar que el almacén aumento los precios sin razón alguna"
+        },
+        {
+          "text": "tienen publicidad engañosa"
+        },
+        {
+          "text": "no compren en este almacén no entregan a tiempo"
+        },
+        {
+          "text": "sigo esperando solución a mi problema"
+        },
+        {
+          "text": "este almacén son unos abusivos"
+        },
+        {
+          "text": "no responden por mi compra"
+        },
+        {
+          "text": "no responden por mi garantia"
+        },
+        {
+          "text": "son unos ladrones"
+        },
+        {
+          "text": "son unos usureros"
+        },
+        {
+          "text": "devuelva mi dinero"
+        },
+        {
+          "text": "este producto esta en mal estado"
+        },
+        {
+          "text": "irresponsables no acatan las normas"
+        },
+        {
+          "text": "demasiado costoso los productos"
+        }
+      ],
+      "description": "Denuncia o queja de sobre costos en diferentes almacenes"
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bienvenido",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hola. ¿Cómo puedo ayudarle?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bienvenido",
+      "previous_sibling": "node_7_1588393563579"
+    },
+    {
+      "type": "standard",
+      "title": "En otras cosas",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "No le he entendido. Intente reformular la consulta."
+              },
+              {
+                "text": "¿Puede expresarse con otras palabras? No le he entendido."
+              },
+              {
+                "text": "No entendí el significado."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "En otras cosas",
+      "previous_sibling": "Bienvenido",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "complaint",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "es una denuncia"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#i_want_complaint",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_7_1588393563579"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Querías decir:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Ninguna de las anteriores"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Querías decir:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "Procesamiento Quejas",
+  "language": "es",
+  "description": ""
+}
